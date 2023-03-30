@@ -1,0 +1,73 @@
+{
+    "root": true,
+    "ignorePatterns": ["**/*"],
+    "plugins": ["@nrwl/nx"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "rules": {
+                "@nrwl/nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "enforceBuildableLibDependency": true,
+                        "allow": [],
+                        "depConstraints": [
+                            {
+                                "sourceTag": "shared",
+                                "onlyDependOnLibsWithTags": ["shared"]
+                            },
+                            {
+                                "sourceTag": "app",
+                                "onlyDependOnLibsWithTags": [
+                                    "dashboard",
+                                    "auth",
+                                    "editor",
+                                    "profile"
+                                ]
+                            },
+                            {
+                                "sourceTag": "dashboard",
+                                "onlyDependOnLibsWithTags": [
+                                    "dashboard",
+                                    "shared"
+                                ]
+                            },
+                            {
+                                "sourceTag": "auth",
+                                "onlyDependOnLibsWithTags": ["auth", "shared"]
+                            },
+                            {
+                                "sourceTag": "editor",
+                                "onlyDependOnLibsWithTags": ["editor", "shared"]
+                            },
+                            {
+                                "sourceTag": "profile",
+                                "onlyDependOnLibsWithTags": [
+                                    "profile",
+                                    "shared"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "extends": ["plugin:@nrwl/nx/typescript"],
+            "rules": {}
+        },
+        {
+            "files": ["*.js", "*.jsx"],
+            "extends": ["plugin:@nrwl/nx/javascript"],
+            "rules": {}
+        },
+        {
+            "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+            "env": {
+                "jest": true
+            },
+            "rules": {}
+        }
+    ]
+}

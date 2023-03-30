@@ -1,0 +1,27 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2022",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@web-app/app-auth": ["app-auth/src/index.ts"],
+            "@web-app/app-dashboard": ["app-dashboard/src/index.ts"],
+            "@web-app/app-editor": ["app-editor/src/index.ts"],
+            "@web-app/app-profile": ["app-profile/src/index.ts"],
+            "@web-app/shared/common": ["shared/common/src/index.ts"],
+            "@web-app/shared/elements": ["shared/elements/src/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
+}

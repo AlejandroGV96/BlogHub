@@ -1,0 +1,34 @@
+{
+    "name": "app-profile",
+    "$schema": "../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "app-profile/src",
+    "prefix": "web-app",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "app-profile/jest.config.ts",
+                "passWithNoTests": true
+            },
+            "configurations": {
+                "ci": {
+                    "ci": true,
+                    "codeCoverage": true
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": [
+                    "app-profile/**/*.ts",
+                    "app-profile/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": ["profile"]
+}
