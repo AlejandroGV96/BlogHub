@@ -20,7 +20,9 @@
                         "prefix": "agv",
                         "style": "kebab-case"
                     }
-                ]
+                ],
+                "@typescript-eslint/no-inferrable-types": "off",
+                "@typescript-eslint/no-empty-function": "off"
             },
             "extends": [
                 "plugin:@nrwl/nx/angular",

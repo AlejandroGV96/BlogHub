@@ -1,0 +1,14 @@
+<label for="textbox-id" class="label">{{ label }}</label>
+<input
+    #inputEl
+    id="textbox-id"
+    class="textbox"
+    [maxLength]="maxLength"
+    [value]="value"
+    [placeholder]="placeholder"
+    [type]="type"
+    [ngClass]="disabled ? 'textbox--disabled' : 'textbox--enabled'"
+    [ngClass]="invalid ? 'textbox--invalid' : ''"
+    [disabled]="disabled"
+    (input)="valueChange(inputEl.value)"
+/>
