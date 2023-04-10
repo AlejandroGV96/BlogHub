@@ -1,0 +1,59 @@
+<form [formGroup]="form" class="form" (submit)="$event.preventDefault()">
+    <agv-textbox
+        class="form__username"
+        [label]="usernameFieldName"
+        [placeholder]="usernameFieldName"
+        [formControl]="form.controls.username"
+        [invalid]="form.controls.username.invalid"
+        for="username"
+    >
+        <ng-container *ngIf="form.controls.username.touched">
+            <span *ngIf="form.controls.username.hasError('required')">
+                This field is required
+            </span>
+        </ng-container>
+    </agv-textbox>
+    <agv-textbox
+        class="form__email"
+        [label]="emailFieldName"
+        [placeholder]="emailFieldPlaceholder"
+        [formControl]="form.controls.email"
+        [invalid]="form.controls.email.invalid"
+        for="email"
+    >
+        <ng-container *ngIf="form.controls.email.touched">
+            <span *ngIf="form.controls.email.hasError('email')">
+                Enter a valid email address
+            </span>
+            <span *ngIf="form.controls.email.hasError('required')">
+                This field is required
+            </span>
+        </ng-container>
+    </agv-textbox>
+    <agv-textbox
+        class="form__password"
+        [label]="passwordFieldName"
+        [placeholder]="passwordFieldPlaceholder"
+        [formControl]="form.controls.password"
+        type="password"
+        [invalid]="form.controls.password.invalid"
+        for="password"
+    >
+        <ng-container *ngIf="form.controls.password.touched">
+            <span *ngIf="form.controls.password.hasError('pattern')">
+                At least 8 characters in length, a lowercase letter, an
+                uppercase letters, a number, and a special characters
+            </span>
+            <span *ngIf="form.controls.password.hasError('required')">
+                This field is required
+            </span>
+        </ng-container>
+    </agv-textbox>
+    <div class="form__spacer"></div>
+    <agv-primary-button
+        [name]="'Submit'"
+        class="form__button"
+        [disabled]="form.invalid"
+        (press)="submitForm()"
+    />
+</form>

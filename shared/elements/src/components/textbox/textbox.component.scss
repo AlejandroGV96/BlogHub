@@ -1,8 +1,12 @@
 :host {
-    display: block;
+    display: flex;
+    flex-direction: column;
+
     .label {
         display: inline-block;
         margin-bottom: 8px;
+
+        align-self: self-start;
 
         color: var(--primary-color);
         font-size: 14px;
@@ -11,7 +15,7 @@
         text-align: center;
     }
 
-    .textbox {
+    .textbox-input {
         all: unset;
 
         display: inline-block;
@@ -56,5 +60,15 @@
                 box-shadow: 0px 0px 0px 2px var(--error-color) inset;
             }
         }
+    }
+
+    .textbox-error {
+        display: inline-block;
+        margin-top: 8px;
+
+        color: var(--error-color);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.5;
     }
 }

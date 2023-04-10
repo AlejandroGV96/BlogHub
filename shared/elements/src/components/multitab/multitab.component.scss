@@ -1,0 +1,51 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    transition: text-decoration 0.2s ease-in-out, color 0.2s ease,
+        background-color 0.2s ease;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    overflow: hidden;
+
+    .multitab-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        &__tab {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            background-color: var(--gray-color);
+
+            &--active {
+                cursor: default;
+                background-color: var(--secondary-color);
+                border-bottom: none;
+            }
+
+            &:last-child:not(:first-child) {
+                border-left: none;
+            }
+        }
+    }
+
+    .multitab-body {
+        flex-grow: 1;
+        padding: 20px;
+        border: 2px solid var(--primary-color);
+        background-color: var(--secondary-color);
+        border-top: none;
+        &:empty {
+            display: none;
+        }
+    }
+}

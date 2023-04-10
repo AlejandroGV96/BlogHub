@@ -2,9 +2,18 @@
 :root {
     --primary-color: #000;
     --secondary-color: #fff;
+    --gray-color: #e4e4e4;
+    --dark-gray-color: #a0a0a0;
     --error-color: rgb(143, 0, 0);
 }
 
 * {
     font-family: monospace;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }

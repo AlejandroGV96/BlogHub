@@ -26,11 +26,13 @@ export class TextboxComponent {
     public value?: string;
 
     @Input() label?: string;
-    @Input() placeholder: string = "Enter text here...";
+    @Input() placeholder?: string = "Enter text here...";
     @Input() type: "text" | "password" = "text";
     @Input() maxLength?: number = 40;
     @Input() disabled?: boolean;
     @Input() invalid?: boolean;
+
+    touched: boolean = false;
 
     constructor() {
         this.valueAccessor.value.subscribe((v) => {
@@ -47,6 +49,7 @@ export class TextboxComponent {
     valueChange(value: string) {
         this.valueAccessor.valueChange(value);
         this.valueAccessor.touchedChange(true);
+        this.touched = true;
         this.cdr.detectChanges();
     }
 }

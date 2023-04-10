@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--dark-gray-color);
+
+    height: 100%;
+
+    .multitab {
+        margin-top: 30%;
+        margin-bottom: auto;
+        width: 600px;
+        max-width: 80vw;
+    }
+}

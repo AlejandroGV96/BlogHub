@@ -1,0 +1,24 @@
+<agv-multitab [tabs]="tabs" [(selectedTab)]="selectedTab" class="multitab">
+    <ng-container [ngSwitch]="selectedTab">
+        <auth-login-form
+            *ngSwitchCase="0"
+            [loginEmailFieldName]="loginEmailFieldName"
+            [loginEmailFieldPlaceholder]="loginEmailFieldPlaceholder"
+            [loginPasswordFieldName]="loginPasswordFieldName"
+            [loginPasswordFieldPlaceholder]="loginPasswordFieldPlaceholder"
+            [validationPattern]="validationPattern"
+            (formSubmit)="onLoginSubmit($event)"
+        />
+        <auth-register-form
+            *ngSwitchCase="1"
+            [usernameFieldName]="registerUsernameFieldName"
+            [usernameFieldPlaceholder]="registerUsernameFieldPlaceholder"
+            [emailFieldName]="loginEmailFieldName"
+            [emailFieldPlaceholder]="loginEmailFieldPlaceholder"
+            [passwordFieldName]="loginPasswordFieldName"
+            [passwordFieldPlaceholder]="loginPasswordFieldPlaceholder"
+            [validationPattern]="validationPattern"
+            (formSubmit)="onRegisterSubmit($event)"
+        />
+    </ng-container>
+</agv-multitab>
