@@ -1,0 +1,22 @@
+:host {
+    .form {
+        display: flex;
+        flex-direction: column;
+
+        &__username {
+            margin-bottom: 20px;
+        }
+
+        &__email {
+            margin-bottom: 20px;
+        }
+
+        &__spacer {
+            flex: 1;
+        }
+
+        &__button {
+            margin-top: 40px;
+        }
+    }
+}

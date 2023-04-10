@@ -1,0 +1,15 @@
+<div class="multitab-header">
+    <div
+        class="multitab-header__tab"
+        *ngFor="let tab of tabs; index as i"
+        [ngClass]="{ 'multitab-header__tab--active': i === selectedTab }"
+        (click)="selectTab(i)"
+        tabindex="0"
+    >
+        <span>{{ tab }}</span>
+    </div>
+</div>
+
+<div class="multitab-body">
+    <ng-content></ng-content>
+</div>

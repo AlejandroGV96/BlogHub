@@ -1,14 +1,20 @@
-<label for="textbox-id" class="label">{{ label }}</label>
+<label for="textbox-input-id" class="label">{{ label }}</label>
 <input
     #inputEl
-    id="textbox-id"
-    class="textbox"
+    id="textbox-input-id"
+    class="textbox-input"
     [maxLength]="maxLength"
     [value]="value"
     [placeholder]="placeholder"
     [type]="type"
-    [ngClass]="disabled ? 'textbox--disabled' : 'textbox--enabled'"
-    [ngClass]="invalid ? 'textbox--invalid' : ''"
+    [ngClass]="{
+        'textbox-input--disabled': !!disabled,
+        'textbox-input--invalid': !!invalid && touched,
+        'textbox-input--enabled': !disabled && !invalid
+    }"
     [disabled]="disabled"
     (input)="valueChange(inputEl.value)"
 />
+<div class="textbox-error" *ngIf="invalid">
+    <ng-content></ng-content>
+</div>
