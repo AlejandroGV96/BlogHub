@@ -23,6 +23,7 @@
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^15.0.0",
     "@angular-devkit/build-angular": "~15.2.0",
     "@angular-devkit/core": "~15.2.0",
     "@angular-devkit/schematics": "~15.2.0",
@@ -39,11 +40,13 @@
     "@nrwl/linter": "15.8.9",
     "@nrwl/workspace": "15.8.9",
     "@schematics/angular": "~15.2.0",
+    "@types/dotenv-webpack": "^7.0.3",
     "@types/jest": "^29.4.0",
-    "@types/node": "16.11.7",
+    "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "cypress": "^12.2.0",
+    "dotenv-webpack": "^8.0.1",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",

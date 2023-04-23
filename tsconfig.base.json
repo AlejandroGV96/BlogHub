@@ -20,7 +20,8 @@
             "@web-app/app-editor": ["app-editor/src/index.ts"],
             "@web-app/app-profile": ["app-profile/src/index.ts"],
             "@web-app/shared/common": ["shared/common/src/index.ts"],
-            "@web-app/shared/elements": ["shared/elements/src/index.ts"]
+            "@web-app/shared/elements": ["shared/elements/src/index.ts"],
+            "@web-app/shared/environment": ["shared/environments/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
