@@ -5,11 +5,15 @@
     background-color: var(--dark-gray-color);
 
     height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     .multitab {
-        margin-top: 30%;
+        margin-top: auto;
         margin-bottom: auto;
         width: 600px;
         max-width: 80vw;
+        padding: 16px;
+        min-width: 300px;
     }
 }
