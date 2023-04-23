@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { environment } from "@web-app/shared/environment";
+import { Environment } from "@web-app/shared/environment";
 @Component({
     selector: "web-app-root",
     templateUrl: "./app.component.html",
@@ -8,6 +8,6 @@ import { environment } from "@web-app/shared/environment";
 export class AppComponent {
     title = "web-app";
     constructor() {
-        console.log("API_URL: ", environment.apiUrl);
+        console.log({ Environment });
     }
 }

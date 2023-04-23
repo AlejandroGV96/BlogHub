@@ -1,7 +1,16 @@
-import { EnvironmentPlugin } from "webpack";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const Dotenv = require("dotenv-webpack");
-
+const webpack = require("webpack");
+const keyPrefix = "BLOG_";
+const keys = Object.keys(process.env).filter((key) =>
+    key.startsWith(keyPrefix),
+);
+const env: {
+    [key: string]: string;
+} = {};
+keys.forEach((key) => {
+    env[key] = JSON.stringify(process.env[key]);
+});
+console.log("\n", "env =", env);
 module.exports = {
-    plugins: [new Dotenv()],
+    plugins: [new webpack.DefinePlugin({ ENV_VARS: env })],
 };
