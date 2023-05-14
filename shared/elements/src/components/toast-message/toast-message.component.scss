@@ -1,0 +1,57 @@
+:host {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 9999;
+    min-width: 332px;
+
+    background-color: var(--secondary-color);
+
+    .toast-message {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid var(--primary-color);
+
+        &__body {
+            flex-grow: 1;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        &__bar {
+            &--error {
+                border-bottom: 4px solid var(--error-color);
+            }
+
+            &--success {
+                border-bottom: 4px solid var(--success-color);
+            }
+
+            &--info {
+                border-bottom: 4px solid var(--info-color);
+            }
+
+            &--warning {
+                border-bottom: 4px solid var(--warning-color);
+            }
+        }
+
+        &--error {
+            background-color: var(--error-background-color);
+        }
+
+        &--success {
+            background-color: var(--success-background-color);
+        }
+
+        &--info {
+            background-color: var(--info-background-color);
+        }
+
+        &--warning {
+            background-color: var(--warning-background-color);
+        }
+    }
+}

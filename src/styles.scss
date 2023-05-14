@@ -4,7 +4,19 @@
     --secondary-color: #fff;
     --gray-color: #e4e4e4;
     --dark-gray-color: #a0a0a0;
+    --loading-background-color: rgba(0, 0, 0, 0.5);
+
     --error-color: rgb(143, 0, 0);
+    --error-background-color: rgba(143, 0, 0, 0.15);
+
+    --success-color: rgb(0, 143, 0);
+    --success-background-color: rgba(0, 143, 0, 0.15);
+
+    --info-color: rgb(0, 0, 143);
+    --info-background-color: rgba(0, 0, 143, 0.15);
+
+    --warning-color: rgb(143, 143, 0);
+    --warning-background-color: rgba(143, 143, 0, 0.15);
 }
 
 * {

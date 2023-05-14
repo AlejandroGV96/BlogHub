@@ -1,1 +1,11 @@
-<p>app-dashboard works!</p>
+<span>This website is under development! Please come back later :)</span>
+<span *ngIf="(isLogged$ | async) === 'logout'; else logged">
+    In the meantime, try our
+    <span class="link" [routerLink]="['/auth']">login page</span>
+</span>
+<ng-template #logged>
+    <span
+        >You can <span class="link" (click)="logout()">log out</span> if you
+        feel like!</span
+    >
+</ng-template>

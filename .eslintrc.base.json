@@ -22,7 +22,8 @@
                                     "dashboard",
                                     "auth",
                                     "editor",
-                                    "profile"
+                                    "profile",
+                                    "shared"
                                 ]
                             },
                             {

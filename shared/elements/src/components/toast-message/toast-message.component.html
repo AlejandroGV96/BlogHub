@@ -1,0 +1,14 @@
+<div
+    *ngIf="toastMessage$ | async as toastMessage"
+    class="toast-message"
+    [ngClass]="'toast-message--' + toastMessage.type"
+>
+    <div class="toast-message__body">
+        <span class="toast-message__message">{{ toastMessage.message }}</span>
+    </div>
+    <div
+        class="toast-message__bar"
+        [ngClass]="'toast-message__bar--' + toastMessage.type"
+        [style]="'width: ' + timeRemainingInPercentage + '%'"
+    ></div>
+</div>

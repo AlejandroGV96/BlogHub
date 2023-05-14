@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { Component, inject } from "@angular/core";
+import { GlobalStateStore } from "@web-app/shared/elements";
 import { Environment } from "@web-app/shared/environment";
 @Component({
     selector: "web-app-root",
@@ -6,7 +8,8 @@ import { Environment } from "@web-app/shared/environment";
     styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-    title = "web-app";
+    private readonly globalStore = inject(GlobalStateStore);
+    readonly loading$ = this.globalStore.loading$;
     constructor() {
         console.log({ Environment });
     }

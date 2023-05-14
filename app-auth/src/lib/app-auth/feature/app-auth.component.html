@@ -6,8 +6,9 @@
             [loginEmailFieldPlaceholder]="loginEmailFieldPlaceholder"
             [loginPasswordFieldName]="loginPasswordFieldName"
             [loginPasswordFieldPlaceholder]="loginPasswordFieldPlaceholder"
-            [validationPattern]="validationPattern"
+            [initialValues]="(loginParams$ | async) ?? undefined"
             (formSubmit)="onLoginSubmit($event)"
+            (formChange)="onLoginChange($event)"
         />
         <auth-register-form
             *ngSwitchCase="1"
@@ -18,6 +19,8 @@
             [passwordFieldName]="loginPasswordFieldName"
             [passwordFieldPlaceholder]="loginPasswordFieldPlaceholder"
             [validationPattern]="validationPattern"
+            [initialValues]="(registerParams$ | async) ?? undefined"
+            (formChange)="onRegisterChange($event)"
             (formSubmit)="onRegisterSubmit($event)"
         />
     </ng-container>
