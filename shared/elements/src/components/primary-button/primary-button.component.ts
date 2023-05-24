@@ -18,6 +18,7 @@ import { CommonModule } from "@angular/common";
 export class PrimaryButtonComponent {
     @Input() name: string = "Default";
     @Input() disabled: boolean = false;
+    @Input() customStyle: string = "";
 
     @Output() press: EventEmitter<void> = new EventEmitter<void>();
 

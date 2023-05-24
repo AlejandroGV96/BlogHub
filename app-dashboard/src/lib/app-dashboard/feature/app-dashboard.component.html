@@ -1,0 +1,6 @@
+<ng-container *ngIf="posts$ | async as posts">
+    <agv-post-card-list
+        [posts]="posts"
+        (loadMorePosts)="loadMorePosts($event)"
+    />
+</ng-container>

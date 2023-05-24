@@ -1,3 +1,9 @@
 <agv-toast-message></agv-toast-message>
 <agv-spinner *ngIf="loading$ | async"></agv-spinner>
+<agv-nav-bar
+    [isLogged]="(isLogged$ | async) === 'login'"
+    (home)="home()"
+    (logout)="logout()"
+    (login)="login()"
+/>
 <router-outlet></router-outlet>

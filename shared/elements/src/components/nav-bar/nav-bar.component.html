@@ -1,0 +1,20 @@
+<nav>
+    <span class="logo" alt="BlogHub Logo" (click)="homePressed()"></span>
+
+    <ng-container *ngIf="isLogged; else logged">
+        <agv-secondary-button
+            [customStyle]="style"
+            (press)="logoutPressed()"
+            class="test"
+            name="Log out"
+        />
+    </ng-container>
+    <ng-template #logged>
+        <agv-primary-button
+            [customStyle]="style"
+            (press)="loginPressed()"
+            class="test"
+            name="Sign up or Log in"
+        />
+    </ng-template>
+</nav>

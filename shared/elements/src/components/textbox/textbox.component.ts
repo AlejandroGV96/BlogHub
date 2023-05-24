@@ -4,9 +4,11 @@ import {
     ChangeDetectorRef,
     Component,
     Input,
+    OnInit,
     inject,
 } from "@angular/core";
 import { ValueAccessorDirective } from "../..";
+import { take } from "rxjs";
 
 @Component({
     selector: "agv-textbox",
@@ -17,7 +19,7 @@ import { ValueAccessorDirective } from "../..";
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [ValueAccessorDirective],
 })
-export class TextboxComponent {
+export class TextboxComponent implements OnInit {
     private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
     private valueAccessor: ValueAccessorDirective<string> = inject(
         ValueAccessorDirective<string>,
@@ -43,6 +45,14 @@ export class TextboxComponent {
         this.valueAccessor.disabled.subscribe((v) => {
             this.disabled = v;
             this.cdr.detectChanges();
+        });
+    }
+
+    ngOnInit(): void {
+        this.valueAccessor.value.pipe(take(1)).subscribe((v) => {
+            if (v) {
+                this.touched = true;
+            }
         });
     }
 

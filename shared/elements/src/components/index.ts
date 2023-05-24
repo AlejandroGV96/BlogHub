@@ -5,3 +5,6 @@ export { TextboxComponent } from "./textbox/textbox.component";
 export { MultitabComponent } from "./multitab/multitab.component";
 export { SpinnerComponent } from "./spinner/spinner.component";
 export { ToastMessage, ToastMessageComponent } from "./toast-message";
+export { NavBarComponent } from "./nav-bar/nav-bar.component";
+export { PostCardComponent } from "./post-card/post-card.component";
+export { PostCardListComponent } from "./post-card-list/post-card-list.component";

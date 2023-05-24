@@ -8,6 +8,7 @@ import { appRoutes } from "./app.routes";
 import { API_URL, ApiModule } from "@web-app/shared/api";
 import { Environment } from "shared/environments/environment-variables";
 import {
+    NavBarComponent,
     PageTitleService,
     SpinnerComponent,
     ToastMessageComponent,
@@ -21,6 +22,7 @@ import {
         ToastMessageComponent,
         SpinnerComponent,
         ApiModule,
+        NavBarComponent,
         RouterModule.forRoot(appRoutes, {
             initialNavigation: "enabledBlocking",
         }),

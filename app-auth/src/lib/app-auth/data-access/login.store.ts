@@ -1,4 +1,4 @@
-import { Injectable, inject } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { ComponentStore } from "@ngrx/component-store";
 import {
@@ -10,7 +10,6 @@ import {
 import { GlobalStateStore } from "@web-app/shared/elements";
 import { EMPTY, Observable, catchError, finalize, switchMap, tap } from "rxjs";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface LoginState {
     loginParams: LoginRequest;
     registerParams: RegisterRequest;

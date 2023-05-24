@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, delay, map, of, switchMap } from "rxjs";
+import { Observable, of, switchMap } from "rxjs";
 import {
     LoginRequest,
     LoginResponse,
