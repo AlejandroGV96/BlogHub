@@ -1,6 +1,24 @@
 <ng-container *ngIf="posts$ | async as posts">
-    <agv-post-card-list
-        [posts]="posts"
-        (loadMorePosts)="loadMorePosts($event)"
-    />
+    <ng-container *ngIf="openedPost; else postList">
+        <agv-post-card
+            class="post-card--simple"
+            [simpleView]="true"
+            [post]="openedPost"
+        />
+        <agv-post-card-details [post]="openedPost" />
+        <agv-secondary-button
+            (press)="openedPost = undefined"
+            name="Back"
+            class="back-button"
+            [customStyle]="style"
+        />
+    </ng-container>
+    <ng-template #postList>
+        <agv-post-card-list
+            *ngIf="!openedPost"
+            [posts]="posts"
+            (loadMorePosts)="loadMorePosts($event)"
+            (openPost)="openedPost = $event"
+        />
+    </ng-template>
 </ng-container>

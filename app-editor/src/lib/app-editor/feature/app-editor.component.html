@@ -1,0 +1,22 @@
+<div class="buttons">
+    <agv-primary-button
+        (press)="submitPost()"
+        [name]="'submit'"
+        [customStyle]="style"
+        [disabled]="true"
+    />
+    <agv-secondary-button
+        (press)="preview = !preview"
+        [name]="preview ? 'preview' : 'edit'"
+        [customStyle]="style"
+    />
+</div>
+
+<textarea
+    [ngClass]="{ visible: !preview }"
+    [(ngModel)]="markdown"
+    placeholder="Start writing your post! (markdown compatible)"
+></textarea>
+<div class="markdown-container" [ngClass]="{ visible: preview }">
+    <app-editor-markdown-preview [content]="markdown" />
+</div>

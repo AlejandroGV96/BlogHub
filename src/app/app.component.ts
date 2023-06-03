@@ -20,6 +20,10 @@ export class AppComponent {
         this.router.navigate(["/"]);
     }
 
+    create() {
+        this.router.navigate(["/editor"]);
+    }
+
     logout() {
         this.globalStore.logout();
     }

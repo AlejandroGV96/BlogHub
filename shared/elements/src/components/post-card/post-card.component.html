@@ -1,16 +1,9 @@
-<!--
-    createdDate: Date;
-    title: string;
-    description: string;
-    likes: number;
-    owner: string; -->
-
 <section class="header">
     <h1>{{ post.title }}</h1>
     <span>{{ "Created on " + (post.createdDate | date) + " " }}</span>
     <span>{{ "by " + post.owner }}</span>
 </section>
 <section>
-    <p>{{ post.description }}</p>
+    <p *ngIf="!simpleView">{{ post.description }}</p>
     <span>{{ "&#10084; Likes: " + post.likes }}</span>
 </section>

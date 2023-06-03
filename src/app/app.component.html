@@ -3,6 +3,7 @@
 <agv-nav-bar
     [isLogged]="(isLogged$ | async) === 'login'"
     (home)="home()"
+    (create)="create()"
     (logout)="logout()"
     (login)="login()"
 />

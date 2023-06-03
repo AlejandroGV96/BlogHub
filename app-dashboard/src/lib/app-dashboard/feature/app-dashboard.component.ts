@@ -7,10 +7,14 @@ import {
 import { CommonModule } from "@angular/common";
 import {
     NavBarComponent,
+    PostCardComponent,
+    PostCardDetailsComponent,
     PostCardListComponent,
+    SecondaryButtonComponent,
 } from "@web-app/shared/elements";
 import { RouterModule } from "@angular/router";
 import { DashboardStore } from "../data-access/dashboard.store";
+import { Post } from "@web-app/shared/api";
 
 @Component({
     standalone: true,
@@ -18,7 +22,10 @@ import { DashboardStore } from "../data-access/dashboard.store";
         CommonModule,
         NavBarComponent,
         RouterModule,
+        PostCardComponent,
         PostCardListComponent,
+        PostCardDetailsComponent,
+        SecondaryButtonComponent,
     ],
     providers: [DashboardStore],
     templateUrl: "./app-dashboard.component.html",
@@ -28,7 +35,16 @@ import { DashboardStore } from "../data-access/dashboard.store";
 export class AppDashboardComponent implements AfterViewInit {
     private readonly dashboardStore = inject(DashboardStore);
 
+    openedPost?: Post;
+
     readonly posts$ = this.dashboardStore.selectPost$;
+
+    readonly style: string = `
+        width: 100px;
+        padding: 0 8px;
+        font-size: 12px;
+        text-transform: none;
+    `;
 
     ngAfterViewInit(): void {
         this.dashboardStore.loadPosts(0);

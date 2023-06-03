@@ -7,8 +7,17 @@
     padding: 20px;
     background-color: var(--secondary-color);
 
+    box-shadow: none;
+
+    transition: box-shadow 0.2s ease;
+
     .header {
         border-bottom: 1px solid var(--primary-color);
         padding-bottom: 5px;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 0px 2px var(--primary-color) inset;
+        cursor: pointer;
     }
 }

@@ -7,4 +7,5 @@ export { SpinnerComponent } from "./spinner/spinner.component";
 export { ToastMessage, ToastMessageComponent } from "./toast-message";
 export { NavBarComponent } from "./nav-bar/nav-bar.component";
 export { PostCardComponent } from "./post-card/post-card.component";
+export { PostCardDetailsComponent } from "./post-card-details/post-card-details.component";
 export { PostCardListComponent } from "./post-card-list/post-card-list.component";

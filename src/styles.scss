@@ -29,3 +29,11 @@ body {
     height: 100%;
     margin: 0;
 }
+
+// MARKDOWN OVERWRITES
+blockquote {
+    border-left: 3px solid rgba(0, 0, 0, 0.21);
+    padding-left: 12px;
+    color: rgba(0, 0, 0, 0.54);
+}
+//

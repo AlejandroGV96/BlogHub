@@ -7,6 +7,7 @@ import {
     LogoutResponse,
 } from "@web-app/shared/api";
 import { EMPTY, Observable, catchError, finalize, switchMap, tap } from "rxjs";
+import { Router } from "@angular/router";
 
 export interface GlobalState {
     toastMessage?: ToastMessage;
@@ -18,6 +19,7 @@ export interface GlobalState {
     providedIn: "root",
 })
 export class GlobalStateStore extends ComponentStore<GlobalState> {
+    readonly router: Router = inject(Router);
     readonly status$ = this.select((state) => state.status);
     readonly loading$ = this.select((state) => state.loading);
 
@@ -81,6 +83,7 @@ export class GlobalStateStore extends ComponentStore<GlobalState> {
                         return EMPTY;
                     }),
                     finalize(() => {
+                        this.router.navigate(["/dashboard"]);
                         this.patchState({ loading: false });
                     }),
                 );

@@ -2,6 +2,12 @@
     <span class="logo" alt="BlogHub Logo" (click)="homePressed()"></span>
 
     <ng-container *ngIf="isLogged; else logged">
+        <agv-primary-button
+            [customStyle]="style"
+            (press)="createPressed()"
+            class="test"
+            name="Create"
+        />
         <agv-secondary-button
             [customStyle]="style"
             (press)="logoutPressed()"

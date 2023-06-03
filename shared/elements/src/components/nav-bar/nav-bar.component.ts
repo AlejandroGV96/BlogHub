@@ -22,6 +22,7 @@ export class NavBarComponent {
     @Output() logout: EventEmitter<void> = new EventEmitter<void>();
     @Output() login: EventEmitter<void> = new EventEmitter<void>();
     @Output() home: EventEmitter<void> = new EventEmitter<void>();
+    @Output() create: EventEmitter<void> = new EventEmitter<void>();
 
     readonly style: string = `
         padding: 0 8px;
@@ -31,6 +32,10 @@ export class NavBarComponent {
 
     homePressed(): void {
         this.home.emit();
+    }
+
+    createPressed(): void {
+        this.create.emit();
     }
 
     logoutPressed(): void {

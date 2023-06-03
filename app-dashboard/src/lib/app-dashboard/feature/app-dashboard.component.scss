@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
 
     background-color: var(--dark-gray-color);
 
@@ -26,5 +25,16 @@ span {
 
     &:hover {
         text-decoration: underline overline;
+    }
+}
+
+.back-button {
+    margin-bottom: 30px;
+}
+
+.post-card {
+    &--simple {
+        box-shadow: 0px 0px 0px 2px var(--primary-color) inset;
+        cursor: default !important;
     }
 }

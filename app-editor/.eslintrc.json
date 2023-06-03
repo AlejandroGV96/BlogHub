@@ -9,7 +9,7 @@
                     "error",
                     {
                         "type": "attribute",
-                        "prefix": "webApp",
+                        "prefix": "appEditor",
                         "style": "camelCase"
                     }
                 ],
@@ -17,10 +17,12 @@
                     "error",
                     {
                         "type": "element",
-                        "prefix": "web-app",
+                        "prefix": "app-editor",
                         "style": "kebab-case"
                     }
-                ]
+                ],
+                "@typescript-eslint/no-inferrable-types": "off",
+                "@typescript-eslint/no-empty-function": "off"
             },
             "extends": [
                 "plugin:@nrwl/nx/angular",

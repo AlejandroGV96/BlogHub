@@ -14,6 +14,7 @@ import {
     ToastMessageComponent,
     appTitleToken,
 } from "@web-app/shared/elements";
+import { MarkdownModule } from "ngx-markdown";
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,6 +27,7 @@ import {
         RouterModule.forRoot(appRoutes, {
             initialNavigation: "enabledBlocking",
         }),
+        MarkdownModule.forRoot(),
     ],
     providers: [
         {

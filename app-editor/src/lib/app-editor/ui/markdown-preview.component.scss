@@ -1,0 +1,14 @@
+:host {
+    flex-grow: 1;
+    background-color: var(--secondary-color);
+    padding: 0 30px;
+    overflow: scroll;
+    width: 80%;
+    margin-bottom: 30px;
+
+    markdown {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        color: var(--primary-color);
+    }
+}
