@@ -1,1 +1,19 @@
-<p>app-profile works!</p>
+<div class="user-details" *ngIf="userProfile$ | async as prof">
+    <agv-textbox
+        label="Email Address"
+        [(ngModel)]="prof.email"
+        [disabled]="true"
+    />
+    <agv-textbox
+        label="Username"
+        [(ngModel)]="prof.username"
+        [disabled]="true"
+    />
+</div>
+
+<agv-post-card
+    *ngFor="let post of myPosts$ | async"
+    class="post-card"
+    [simpleView]="true"
+    [post]="post"
+/>

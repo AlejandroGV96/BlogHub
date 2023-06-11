@@ -5,12 +5,14 @@ import {
     AuthService,
     LoginResponse,
     LogoutResponse,
+    UserProfile,
 } from "@web-app/shared/api";
 import { EMPTY, Observable, catchError, finalize, switchMap, tap } from "rxjs";
 import { Router } from "@angular/router";
 
 export interface GlobalState {
     toastMessage?: ToastMessage;
+    userProfile?: UserProfile;
     loading: boolean;
     status: "login" | "logout" | "error";
 }
@@ -22,11 +24,21 @@ export class GlobalStateStore extends ComponentStore<GlobalState> {
     readonly router: Router = inject(Router);
     readonly status$ = this.select((state) => state.status);
     readonly loading$ = this.select((state) => state.loading);
+    readonly userProfile$ = this.select((state) => state.userProfile);
 
     constructor(private readonly authService: AuthService) {
+        const userProfile = {
+            _id: localStorage.getItem("_id") as string,
+            email: localStorage.getItem("email") as string,
+            username: localStorage.getItem("username") as string,
+        };
         super({
             status: inject(AuthService).isAuthenticated() ? "login" : "logout",
             loading: false,
+            userProfile:
+                userProfile._id && userProfile.email && userProfile.username
+                    ? userProfile
+                    : undefined,
         });
     }
 
@@ -35,6 +47,14 @@ export class GlobalStateStore extends ComponentStore<GlobalState> {
         ...state,
         toastMessage,
     }));
+
+    //update user profile
+    updateUserProfile = this.updater(
+        (state, userProfile?: UserProfile | undefined) => ({
+            ...state,
+            userProfile,
+        }),
+    );
 
     // clear toast message
     clearToastMessage = this.updater((state) => ({
@@ -61,17 +81,13 @@ export class GlobalStateStore extends ComponentStore<GlobalState> {
                     tap((LogoutResponse: LogoutResponse) => {
                         if (LogoutResponse.deletedCount === 0)
                             throw new Error("Logout failed");
-                        const placeholder: LoginResponse = {
-                            accessToken: "",
-                            refreshToken: "",
-                        };
-                        Object.keys(placeholder).forEach((key: string) => {
-                            localStorage.removeItem(key);
-                        });
+
+                        localStorage.clear();
                         this.updateToastMessage({
                             message: "Logout successful!",
                             type: "success",
                         });
+                        this.updateUserProfile(undefined);
                         this.patchState({ status: "logout" });
                     }),
                     catchError((error) => {

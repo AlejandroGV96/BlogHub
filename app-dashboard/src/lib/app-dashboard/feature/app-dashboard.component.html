@@ -17,8 +17,10 @@
         <agv-post-card-list
             *ngIf="!openedPost"
             [posts]="posts"
+            [showLikeButton]="(this.isUserLoggedIn$ | async) === 'login'"
             (loadMorePosts)="loadMorePosts($event)"
             (openPost)="openedPost = $event"
+            (liked)="onLiked($event)"
         />
     </ng-template>
 </ng-container>

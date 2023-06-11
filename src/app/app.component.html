@@ -2,9 +2,11 @@
 <agv-spinner *ngIf="loading$ | async"></agv-spinner>
 <agv-nav-bar
     [isLogged]="(isLogged$ | async) === 'login'"
+    [currentUser]="(userProfile$ | async) ?? undefined"
     (home)="home()"
     (create)="create()"
     (logout)="logout()"
     (login)="login()"
+    (profile)="profile()"
 />
 <router-outlet></router-outlet>

@@ -1,7 +1,9 @@
 <agv-post-card
-    *ngFor="let post of posts"
+    *ngFor="let post of posts; trackBy: getPostId"
     [post]="post"
     (click)="onPostClick(post)"
+    (liked)="onLiked($event)"
+    [showLikeButton]="showLikeButton"
 />
 <agv-primary-button
     *ngIf="posts.length > 0"

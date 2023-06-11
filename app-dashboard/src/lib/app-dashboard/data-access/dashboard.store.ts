@@ -30,6 +30,18 @@ export class DashboardStore extends ComponentStore<DashboardState> {
         },
     );
 
+    readonly updatePost = this.updater((state: DashboardState, post: Post) => {
+        const { posts } = state;
+        const index = posts.findIndex(({ id: _id }) => _id === post.id);
+        if (index !== -1) {
+            posts[index] = post;
+        }
+        return {
+            ...state,
+            posts: [...posts],
+        };
+    });
+
     readonly loadPosts = this.effect((skip$: Observable<number>) => {
         return skip$.pipe(
             switchMap((skip) => {
@@ -55,4 +67,35 @@ export class DashboardStore extends ComponentStore<DashboardState> {
             }),
         );
     });
+
+    readonly changeLikePostStatus = this.effect(
+        (post$: Observable<{ liked: boolean; postId: string }>) => {
+            return post$.pipe(
+                switchMap(({ liked, postId }) => {
+                    return this.postsService
+                        .updatePostLikeStatus(liked, postId)
+                        .pipe(
+                            tap((post) => {
+                                this.updatePost(post);
+                                this.globalStore.updateToastMessage({
+                                    message: `Post ${
+                                        liked ? "liked" : "unliked"
+                                    }`,
+                                    type: "success",
+                                });
+                            }),
+                            catchError(() => {
+                                this.globalStore.updateToastMessage({
+                                    message: `Failed to ${
+                                        liked ? "like" : "unlike"
+                                    } post`,
+                                    type: "error",
+                                });
+                                return EMPTY;
+                            }),
+                        );
+                }),
+            );
+        },
+    );
 }

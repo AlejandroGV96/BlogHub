@@ -21,8 +21,26 @@
         width: 100%;
         height: 100%;
 
+        .welcome-message {
+            word-wrap: normal;
+        }
+
         .logo {
             background-image: url("logo.svg");
+            background-size: cover;
+            background-color: var(--secondary-color);
+            width: 32px;
+            min-width: 32px;
+            height: 32px;
+
+            cursor: pointer;
+            &:hover {
+                filter: invert(10%);
+            }
+        }
+
+        .profile-icon {
+            background-image: url("profile.svg");
             background-size: cover;
             background-color: var(--secondary-color);
             width: 32px;

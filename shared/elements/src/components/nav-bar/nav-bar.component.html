@@ -1,25 +1,31 @@
 <nav>
     <span class="logo" alt="BlogHub Logo" (click)="homePressed()"></span>
 
-    <ng-container *ngIf="isLogged; else logged">
+    <span class="welcome-message" *ngIf="currentUser">{{
+        "Welcome back, " + currentUser.username
+    }}</span>
+
+    <ng-container *ngIf="isLogged; else loggedOut">
         <agv-primary-button
             [customStyle]="style"
             (press)="createPressed()"
-            class="test"
             name="Create"
         />
         <agv-secondary-button
             [customStyle]="style"
             (press)="logoutPressed()"
-            class="test"
             name="Log out"
         />
+        <span
+            class="profile-icon"
+            alt="Profile Icon"
+            (click)="profilePressed()"
+        ></span>
     </ng-container>
-    <ng-template #logged>
+    <ng-template #loggedOut>
         <agv-primary-button
             [customStyle]="style"
             (press)="loginPressed()"
-            class="test"
             name="Sign up or Log in"
         />
     </ng-template>

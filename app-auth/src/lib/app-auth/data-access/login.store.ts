@@ -6,6 +6,7 @@ import {
     LoginRequest,
     LoginResponse,
     RegisterRequest,
+    UserProfile,
 } from "@web-app/shared/api";
 import { GlobalStateStore } from "@web-app/shared/elements";
 import { EMPTY, Observable, catchError, finalize, switchMap, tap } from "rxjs";
@@ -64,12 +65,14 @@ export class LoginStore extends ComponentStore<LoginState> {
                 this.globalStore.patchState({ loading: true });
                 return this.authService.login(loginParams).pipe(
                     tap((res: LoginResponse) => {
-                        Object.keys(res).forEach((key: string) => {
+                        Object.keys(res.userProfile).forEach((key: string) => {
                             localStorage.setItem(
                                 key,
-                                res[key as keyof LoginResponse],
+                                res.userProfile[key as keyof UserProfile],
                             );
                         });
+                        this.globalStore.updateUserProfile(res.userProfile);
+                        localStorage.setItem("accessToken", res.accessToken);
                         this.globalStore.updateToastMessage({
                             message: "Login successful",
                             type: "success",

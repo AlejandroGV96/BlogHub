@@ -6,6 +6,7 @@ import {
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import {
+    GlobalStateStore,
     NavBarComponent,
     PostCardComponent,
     PostCardDetailsComponent,
@@ -34,6 +35,9 @@ import { Post } from "@web-app/shared/api";
 })
 export class AppDashboardComponent implements AfterViewInit {
     private readonly dashboardStore = inject(DashboardStore);
+    private readonly globalStore = inject(GlobalStateStore);
+
+    readonly isUserLoggedIn$ = this.globalStore.status$;
 
     openedPost?: Post;
 
@@ -52,5 +56,9 @@ export class AppDashboardComponent implements AfterViewInit {
 
     loadMorePosts(count: number): void {
         this.dashboardStore.loadPosts(count);
+    }
+
+    onLiked({ liked, postId }: { liked: boolean; postId: string }): void {
+        this.dashboardStore.changeLikePostStatus({ liked, postId });
     }
 }

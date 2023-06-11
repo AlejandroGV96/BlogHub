@@ -20,8 +20,11 @@ import { PrimaryButtonComponent } from "../primary-button/primary-button.compone
 })
 export class PostCardListComponent {
     @Input() posts: Post[] = [];
+    @Input() showLikeButton: boolean = false;
+
     @Output() loadMorePosts = new EventEmitter<number>();
     @Output() openPost = new EventEmitter<Post>();
+    @Output() liked = new EventEmitter<{ liked: boolean; postId: string }>();
 
     onPostClick(post: Post): void {
         this.openPost.emit(post);
@@ -29,5 +32,13 @@ export class PostCardListComponent {
 
     loadMore(): void {
         this.loadMorePosts.emit(this.posts.length);
+    }
+
+    onLiked({ liked, postId }: { liked: boolean; postId: string }): void {
+        this.liked.emit({ liked, postId });
+    }
+
+    getPostId(index: number, post: Post): string {
+        return post.id;
     }
 }

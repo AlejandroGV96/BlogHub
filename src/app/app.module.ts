@@ -13,8 +13,10 @@ import {
     SpinnerComponent,
     ToastMessageComponent,
     appTitleToken,
+    httpInterceptorProviders,
 } from "@web-app/shared/elements";
 import { MarkdownModule } from "ngx-markdown";
+import { EditorStore } from "app-editor/src/lib/app-editor/data-access/editor.store";
 
 @NgModule({
     declarations: [AppComponent],
@@ -42,6 +44,8 @@ import { MarkdownModule } from "ngx-markdown";
             provide: TitleStrategy,
             useClass: PageTitleService,
         },
+        httpInterceptorProviders,
+        EditorStore,
     ],
     bootstrap: [AppComponent],
 })

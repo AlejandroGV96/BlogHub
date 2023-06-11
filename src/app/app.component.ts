@@ -10,6 +10,8 @@ import { Environment } from "@web-app/shared/environment";
 })
 export class AppComponent {
     private readonly globalStore = inject(GlobalStateStore);
+
+    readonly userProfile$ = this.globalStore.userProfile$;
     readonly loading$ = this.globalStore.loading$;
 
     private readonly router = inject(Router);
@@ -22,6 +24,10 @@ export class AppComponent {
 
     create() {
         this.router.navigate(["/editor"]);
+    }
+
+    profile() {
+        this.router.navigate(["/profile"]);
     }
 
     logout() {

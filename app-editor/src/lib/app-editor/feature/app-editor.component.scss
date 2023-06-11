@@ -13,6 +13,15 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
+    .title {
+        width: 80%;
+    }
+
+    .description {
+        flex-grow: 0;
+        margin-bottom: 0;
+    }
+
     textarea {
         flex-grow: 1;
         width: 80%;

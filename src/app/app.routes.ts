@@ -12,9 +12,6 @@ export const authGuard = (
 ) => {
     const isAuth = inject(AuthService).isAuthenticated();
     const urlTree = createUrlTreeFromSnapshot(next, ["/", redirectionRoute]);
-    console.log("isAuth", isAuth);
-    console.log("next", next);
-    console.log("urlTree", urlTree);
     return isAuth ? true : urlTree;
 };
 
@@ -26,15 +23,15 @@ export const appRoutes: Route[] = [
     },
     {
         path: "auth",
+        title: "Authentication",
         loadChildren: () =>
             import("@web-app/app-auth").then((m) => m.appAuthRoutes),
-        title: "Authentication",
     },
     {
         path: "dashboard",
+        title: "Dashboard",
         loadChildren: () =>
             import("@web-app/app-dashboard").then((m) => m.appDashboardRoutes),
-        title: "Dashboard",
     },
     {
         path: "editor",
@@ -47,6 +44,7 @@ export const appRoutes: Route[] = [
     },
     {
         path: "profile",
+        title: "Profile",
         loadChildren: () =>
             import("@web-app/app-profile").then((m) => m.appProfileRoutes),
         canActivate: [
